@@ -68,15 +68,23 @@ public class ApiController {
 
     @PostMapping(path = "/auth", consumes = "application/json", produces = "application/json")
     public JSONObject authorization(@RequestBody JSONObject member) throws ParseException {
+        System.out.println("Connection is true");
         JSONParser parser = new JSONParser();
         JSONObject json = (JSONObject) parser.parse(String.valueOf(member));
         if (checkAuth(json)){
+            System.out.println("Авторизация пройдена успешно");
             return (JSONObject) parser.parse(personService.getPersonByLogin(json.get("login").toString()).get(0).toString());
         }
             return null;
     }
 
-    @PostMapping(path = "/dataObserved", consumes = "application/json", produces = "application/json")
+//    @PostMapping(path = "/auth")
+//    public void getDataObserved(@RequestBody String member)throws ParseException {
+//        System.out.println(member);
+//    }
+
+
+        @PostMapping(path = "/dataObserved", consumes = "application/json", produces = "application/json")
     public JSONObject getDataObserved(@RequestBody JSONObject member)throws ParseException {
         JSONParser parser = new JSONParser();
         Observed observed = observedService.getDataObserved(
