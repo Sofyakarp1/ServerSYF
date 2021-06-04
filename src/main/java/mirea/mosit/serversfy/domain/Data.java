@@ -1,24 +1,31 @@
 package mirea.mosit.serversfy.domain;
 
-import java.sql.Time;
 import java.util.Objects;
 
 public class Data {
     public String name;
     public String sensor_action;
-    public String getSensor_rele;
+    public String sensor_rele;
     public String time_action;
     public String time_rele;
 
-    public Data(String name, String sensor_action, String getSensor_rele, String time_action, String time_rele) {
+    public Data(String name, String sensor_action, String sensor_rele, String time_action, String time_rele) {
         this.name = name;
         this.sensor_action = sensor_action;
-        this.getSensor_rele = getSensor_rele;
+        this.sensor_rele = sensor_rele;
         this.time_action = time_action;
         this.time_rele = time_rele;
     }
 
     public Data() {
+    }
+
+    public String getSensor_rele() {
+        return sensor_rele;
+    }
+
+    public void setSensor_rele(String sensor_rele) {
+        this.sensor_rele = sensor_rele;
     }
 
     public String getName() {
@@ -37,13 +44,6 @@ public class Data {
         this.sensor_action = sensor_action;
     }
 
-    public String getGetSensor_rele() {
-        return getSensor_rele;
-    }
-
-    public void setGetSensor_rele(String getSensor_rele) {
-        this.getSensor_rele = getSensor_rele;
-    }
 
     public String getTime_action() {
         return time_action;
@@ -68,7 +68,7 @@ public class Data {
         Data data = (Data) o;
         return Objects.equals(name, data.name) &&
                 Objects.equals(sensor_action, data.sensor_action) &&
-                Objects.equals(getSensor_rele, data.getSensor_rele) &&
+                Objects.equals(sensor_rele, data.sensor_rele) &&
                 Objects.equals(time_action, data.time_action) &&
                 Objects.equals(time_rele, data.time_rele);
     }
@@ -78,7 +78,7 @@ public class Data {
         return "Data{" +
                 "name='" + name + '\'' +
                 ", sensor_action='" + sensor_action + '\'' +
-                ", getSensor_rele='" + getSensor_rele + '\'' +
+                ", sensor_rele='" + sensor_rele + '\'' +
                 ", time_action=" + time_action +
                 ", time_rele='" + time_rele + '\'' +
                 '}';

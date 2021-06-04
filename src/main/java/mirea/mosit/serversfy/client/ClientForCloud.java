@@ -9,9 +9,9 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class ClientForCloud {
-    public Data getJson(Client client) throws ParseException {
+    public Data getJson(Client client, String url) throws ParseException {
 
-        WebResource webResource = client.resource("https://dev.rightech.io/api/v1/objects/606ccc86aab3f80010b36f03");
+        WebResource webResource = client.resource("https://dev.rightech.io/api/v1/objects/" + url);
 
         ClientResponse response = webResource.header("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2MDg4MWNkZjYwZjRlOTAwMTAyYjc5YzciLCJzdWIiOiI1ZjhkODYxMmUxODgzY2ZiZmQxNzI0MzUiLCJncnAiOiI1ZjhkODYxMmUxODgzYzVkMzExNzI0MzQiLCJsaWMiOnRydWUsInVzZyI6ImFwaSIsImZ1bGwiOmZhbHNlLCJyaWdodHMiOjEuNSwiaWF0IjoxNjE5NTMzMDIzLCJleHAiOjE2MjIwNjI4MDB9.wU_Ni3OW0xaP-HYN0zezEeyokl1PVGTZDZz5DiK16i4").accept("application/json").get(ClientResponse.class);
 
@@ -27,7 +27,7 @@ public class ClientForCloud {
         JSONParser jsonParser = new JSONParser();
         JSONObject jsonObject = (JSONObject) jsonParser.parse(output);
         JSONObject json = (JSONObject) jsonObject.get("state");
-        Data data = new Data((String) jsonObject.get("id"), json.get("sensor_rele").toString(), json.get("rele").toString(), json.get("time_action").toString(), json.get("time_rele").toString());
+        Data data = new Data((String) jsonObject.get("id"), json.get("sensor_action").toString(), json.get("sensor_rele").toString(), json.get("time_action").toString(), json.get("time_rele").toString());
         return data;
     }
 }

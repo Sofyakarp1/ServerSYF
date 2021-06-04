@@ -26,4 +26,6 @@ public class ObservedService {
     }
 
     public List<Observed> getDataObserved(String login) {return observedRepository.getDataObserved(login);}
+
+    public String getUrlByLogin(String login){return  observedRepository.getUrlByLogin(login);}
 }

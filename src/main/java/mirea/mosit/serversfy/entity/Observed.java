@@ -7,7 +7,7 @@ import java.sql.Time;
 @Table(name = "observed")
 public class Observed {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column
