@@ -9,9 +9,9 @@ import static java.time.temporal.ChronoUnit.MINUTES;
 
 public class GetResult {
 
-    public static String getResultTimeData(String timeAction, String timeRele){
+    public String getResultTimeData(String timeAction, String timeRele){
 
-        boolean resR = releAlh(timeRele);
+        boolean resR = true;
         boolean resA = actionAlh(timeAction);
 
         if (resA && resR){
@@ -29,13 +29,17 @@ public class GetResult {
         return "Ошибка сервера!";
     }
 
-    public static boolean releAlh(String timeRele){
+    public boolean releAlh(String timeRele){
+        String data = timeRele.replace(".", "T");
         //LocalDateTime fromAction = LocalDateTime.parse("2021-05-31T22:55:34.915470");
+        LocalDateTime first =  LocalDateTime.parse("2021-05-31T22:55:34.915470");
+        LocalDateTime second =  LocalDateTime.parse("2021-05-31T22:55:34.915470");
 
-        LocalDateTime fromAction = LocalDateTime.parse(timeRele);
+
+
+        LocalDateTime fromAction = LocalDateTime.parse(data);
         LocalDate dataFromAction = fromAction.toLocalDate();
         LocalTime timeFromAction = fromAction.toLocalTime();
-
 
         // время конца дня
         LocalTime time_22 = LocalTime.parse("22:00:00");
@@ -68,9 +72,10 @@ public class GetResult {
     }
 
 
-    public static boolean actionAlh(String timeAction) {
+    public boolean actionAlh(String timeAction) {
+        String data = timeAction.replace(".", "T");
 
-        LocalDateTime fromAction = LocalDateTime.parse(timeAction);
+        LocalDateTime fromAction = LocalDateTime.parse(data);
         LocalDate dataFromAction = fromAction.toLocalDate();
         LocalTime timeFromAction = fromAction.toLocalTime();
 

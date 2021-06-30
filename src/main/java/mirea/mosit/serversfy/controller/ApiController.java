@@ -26,6 +26,7 @@ public class ApiController {
     @Autowired
     private AuthService authService;
 
+
     @PostMapping(path = "/cloud/object", consumes = "application/json", produces = "application/json")
     public Data getData(@RequestBody JSONObject member)  throws ParseException {
         JSONParser parser = new JSONParser();
@@ -54,7 +55,7 @@ public class ApiController {
             return null;
     }
 
-        @PostMapping(path = "/dataObserved", consumes = "application/json", produces = "application/json")
+    @PostMapping(path = "/dataObserved", consumes = "application/json", produces = "application/json")
     public JSONObject getDataObserved(@RequestBody JSONObject member)throws ParseException {
         JSONParser parser = new JSONParser();
         Observed observed = observedService.getDataObserved(
