@@ -7,7 +7,7 @@ import java.sql.Time;
 @Table(name = "sensor_action")
 public class Action {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column
